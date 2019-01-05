@@ -152,4 +152,36 @@ plot(Boston$tax, Boston$crim)
 # The crime rate is high between 600 and 700 Boston tax
 
 # (d)
+hist(Boston$crim[Boston$crim>1],breaks=25)
+hist(Boston$tax,breaks=25)
+hist(Boston$ptratio,breaks=25)
 
+# (e)
+dim(Boston[Boston$chas==1,])
+# [1] 35 14
+
+# (f)
+median(Boston$ptratio)
+# [1] 19.05
+
+# (g)
+
+# Which suburb of Boston has lowest median value of owner-occupied homes?
+Boston[Boston$medv==min(Boston$medv),]
+# crim zn indus chas   nox    rm age    dis rad tax ptratio  black lstat medv
+# 399 38.3518  0  18.1    0 0.693 5.453 100 1.4896  24 666    20.2 396.90 30.59    5
+# 406 67.9208  0  18.1    0 0.693 5.683 100 1.4254  24 666    20.2 384.97 22.98    5
+
+# alternative...
+subset(Boston,medv==min(Boston$medv))
+
+# How the values of the other predictors for these 2 suburbs (399 and 406) compare to overall ranges
+# for those predictors?
+
+summary(Boston$crim)
+summary(Boston$zn)
+
+# Suburbs that average more than sevven rooms per dwelling
+dim(Boston[Boston$rm>7,])
+nrow(Boston[Boston$rm>7,])
+nrow(Boston[Boston$rm>8,])
